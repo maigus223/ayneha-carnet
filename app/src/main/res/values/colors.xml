@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2026 MAIGUS -->
+<resources>
+    <color name="ic_launcher_background">#0D1117</color>
+    <color name="ic_launcher_foreground">#FF9F1C</color>
+    <color name="primary_background">#0D1117</color>
+    <color name="keyboard_bg">#0D1117</color>
+    <color name="text_primary">#E6EDF3</color>
+    <color name="composition_bg">#161B22</color>
+    <color name="key_bg_default">#161B22</color>
+    <color name="popup_bg">#161B22</color>
+    <color name="popup_text">#E6EDF3</color>
+    <color name="key_bg_special">#FF9F1C</color>
+    <color name="text_on_special">#0D1117</color>
+    <color name="accent_color">#FF9F1C</color>
+    <color name="popup_selected_bg">#FF9F1C</color>
+    <color name="ring_color">#FF9F1C</color>
+    <color name="key_bg_action">#21262D</color>
+    <color name="secondary_foreground">#C9D1D9</color>
+    <color name="muted">#21262D</color>
+    <color name="muted_foreground">#8B949E</color>
+    <color name="key_bg_pressed">#30363D</color>
+    <color name="accent_foreground">#E6EDF3</color>
+    <color name="destructive">#DA3633</color>
+    <color name="destructive_foreground">#F0F6FC</color>
+    <color name="border_color">#30363D</color>
+    <color name="input_color">#30363D</color>
+</resources>

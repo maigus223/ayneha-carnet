@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2026 MAIGUS -->
+<resources>
+    <!-- Fallback only - UI is 100% AYNEHA in Compose -->
+    <string name="app_name">AYNEHA Carnet</string>
+
+    <string name="ime_name">AYNEHA Carnet</string>
+    <string name="settings_title">Réglages AYNEHA</string>
+    <string name="enable_keyboard">Activer le clavier AYNEHA</string>
+    <string name="open_settings">Réglages clavier</string>
+    <string name="onboarding_text">Système d\'écriture AYNEHA - clavier Songhay, disposition 10-10-7, pur RTL.</string>
+    <string name="developer_credit">MAIGUS</string>
+</resources>

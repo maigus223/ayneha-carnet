@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Copyright (C) 2026 MAIGUS -->
+<resources>
+    <style name="Theme.AynehaCarnet" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#0D1117</item>
+        <item name="android:navigationBarColor">#0D1117</item>
+        <item name="android:windowBackground">#0D1117</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+    <style name="Theme.Ayneha" parent="Theme.AynehaCarnet" />
+</resources>
