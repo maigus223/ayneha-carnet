@@ -44,6 +44,28 @@ class MainActivity : ComponentActivity() {
                 AynehaCarnetNav()
             }
         }
+        // Mise à jour depuis ayneha.org : tirer la liste des notes vers le bas (voir MiseAJourUi.kt).
+        maj = MiseAJourUi(
+            this,
+            accent = 0xFFFF9F1C.toInt(),
+            fond = 0xFF161B22.toInt(),
+            encre = 0xFFE6EDF3.toInt(),
+            police = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.ayneha_pro),
+            geste = false
+        )
+        MiseAJourUi.courant = maj
+    }
+
+    private lateinit var maj: MiseAJourUi
+
+    override fun onResume() {
+        super.onResume()
+        if (::maj.isInitialized) { MiseAJourUi.courant = maj; maj.surReprise() }
+    }
+
+    override fun onDestroy() {
+        if (MiseAJourUi.courant === maj) MiseAJourUi.courant = null
+        super.onDestroy()
     }
 }
 

@@ -65,7 +65,7 @@ fun PrivacyScreen(onBack: () -> Unit) {
                 .padding(20.dp)
         ) {
             Text(
-                "Version $versionName - Dernière mise à jour : 11 octobre 2026",
+                "Version $versionName - Dernière mise à jour : 1er novembre 2026",
                 color = TextMuted,
                 fontSize = 14.sp
             )
@@ -93,6 +93,13 @@ fun PrivacyScreen(onBack: () -> Unit) {
             Spacer(Modifier.height(16.dp))
             Text(
                 "Pour écrire, AYNEHA Carnet utilise le clavier AYNEHA, qui fonctionne entièrement hors-ligne. Comme tout clavier système, il peut techniquement recevoir ce que tu tapes quand tu l'actives dans les réglages Android ; il ne transmet ni n'enregistre rien en dehors de cet appareil.",
+                color = TextPrimary,
+                fontSize = 16.sp,
+                lineHeight = 24.sp
+            )
+            Spacer(Modifier.height(16.dp))
+            Text(
+                "Mise à jour depuis ayneha.org : seulement quand tu tires la liste des notes vers le bas, l'app lit sur ayneha.org un petit fichier qui indique la dernière version. Si une version plus récente existe, elle peut la télécharger depuis ayneha.org ; son empreinte est vérifiée et c'est toi qui confirmes l'installation. Tes notes et ce que tu tapes ne sont jamais envoyés : le clavier intégré n'utilise jamais Internet. Les permissions Internet et installation d'applications servent uniquement à cette mise à jour.",
                 color = TextPrimary,
                 fontSize = 16.sp,
                 lineHeight = 24.sp

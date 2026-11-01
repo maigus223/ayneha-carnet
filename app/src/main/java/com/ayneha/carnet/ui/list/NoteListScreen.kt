@@ -34,6 +34,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.Velocity
+import com.ayneha.carnet.MiseAJourUi
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
@@ -278,10 +286,53 @@ fun NoteListScreen(
 
             Spacer(Modifier.height(12.dp))
 
+            // Mise à jour depuis ayneha.org : quand la liste est tout en haut, tirer
+            // vers le bas fait descendre le rond orange (voir MiseAJourUi.kt).
+            val tirage = remember {
+                object : NestedScrollConnection {
+                    var d = 0f
+                    override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                        // On remonte le doigt pendant le tirage : on réduit d'abord le tirage.
+                        if (d > 0f && available.y < 0f) {
+                            val c = maxOf(available.y, -d)
+                            d += c
+                            MiseAJourUi.courant?.tirer(d)
+                            return Offset(0f, c)
+                        }
+                        return Offset.Zero
+                    }
+                    override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
+                        // La liste ne peut plus monter (elle est tout en haut) : c'est un tirage.
+                        if (source == NestedScrollSource.UserInput && available.y > 0f) {
+                            d += available.y
+                            MiseAJourUi.courant?.tirer(d)
+                            return Offset(0f, available.y)
+                        }
+                        return Offset.Zero
+                    }
+                    override suspend fun onPreFling(available: Velocity): Velocity {
+                        if (d > 0f) { d = 0f; MiseAJourUi.courant?.lacher() }
+                        return Velocity.Zero
+                    }
+                }
+            }
+
             if (notes.isEmpty()) {
-                EmptyState(onNewNote)
+                // Zone qui défile (même vide) pour que le geste fonctionne aussi sans notes.
+                BoxWithConstraints(Modifier.fillMaxSize()) {
+                    val hauteur = maxHeight
+                    Box(
+                        Modifier
+                            .fillMaxSize()
+                            .nestedScroll(tirage)
+                            .verticalScroll(rememberScrollState())
+                    ) {
+                        Box(Modifier.height(hauteur)) { EmptyState(onNewNote) }
+                    }
+                }
             } else {
                 LazyColumn(
+                    modifier = Modifier.nestedScroll(tirage),
                     verticalArrangement = Arrangement.spacedBy(11.dp),
                     contentPadding = PaddingValues(bottom = 88.dp)
                 ) {

@@ -3,4 +3,6 @@
 <!-- Copyright (C) 2026 MAIGUS -->
 <paths>
     <cache-path name="shared_notes" path="shared_notes/" />
+    <!-- Mise à jour depuis ayneha.org : APK téléchargé dans cacheDir/maj -->
+    <cache-path name="maj" path="maj/" />
 </paths>
